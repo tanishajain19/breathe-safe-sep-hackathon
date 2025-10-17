@@ -213,21 +213,61 @@ The included **baby_monitor.mp4** video demonstrates:
 
 ## 🛠️ Tech Stack
 
-### Backend
-- **Python 3.12** - Core language
-- **MediaPipe** - Object detection and pose estimation
-- **OpenCV** - Video processing and frame capture
-- **scikit-learn** - ML model training (Random Forest)
-- **WebSockets** - Real-time data broadcasting
-- **NumPy/SciPy** - Signal processing and numerical operations
+### Backend (Python AI/ML Server)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Python** | 3.12 | Core backend language |
+| **MediaPipe** | 0.10.21 | Real-time object detection & 33-point pose estimation |
+| **OpenCV** | 4.11+ | Video processing, frame capture, optical flow tracking |
+| **scikit-learn** | 1.7+ | Random Forest classifier training & inference |
+| **WebSockets** | 15.0+ | Real-time bi-directional communication |
+| **NumPy** | 1.26 | Numerical operations, array processing |
+| **SciPy** | 1.16+ | Signal processing (bandpass filters, peak detection) |
+| **Joblib** | 1.5+ | ML model serialization (position_model.joblib) |
+| **Streamlit** | 1.50+ | Optional web UI for monitoring |
 
-### Frontend
-- **React Native** - Cross-platform mobile development
-- **Expo** - Development framework
-- **React Navigation** - Screen navigation
-- **WebSocket Client** - Real-time data reception
-- **OpenAI GPT-4** - AI-powered recommendations
-- **React Native Chart Kit** - Data visualization
+**Key Algorithms**:
+- Butterworth bandpass filter (0.08-1.2 Hz)
+- Peak detection with hysteresis
+- Random Forest ensemble learning
+- Optical flow multi-point tracking
+
+### Frontend (React Native Mobile App)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React Native** | 0.81.4 | Cross-platform mobile framework (iOS/Android) |
+| **React** | 19.1.0 | UI component framework |
+| **Expo** | ~54.0 | Development platform & build tools |
+| **React Navigation** | 7.1+ | Tab & stack navigation |
+| **WebSocket** | Native | Real-time backend connection |
+| **OpenAI API** | GPT-4 | AI-powered sleep recommendations |
+| **Chart Kit** | 6.12 | Interactive data visualization |
+| **React Native SVG** | 15.14 | Vector graphics & animations |
+| **Expo AV** | 16.0 | Audio alerts for critical states |
+
+**Key Libraries**:
+- `@react-navigation/bottom-tabs` - Tab navigation
+- `@react-navigation/stack` - Screen stacks
+- `expo-linear-gradient` - Beautiful gradients
+- `react-native-safe-area-context` - Safe area handling
+
+### Communication Layer
+| Component | Technology | Protocol |
+|-----------|------------|----------|
+| **Server** | WebSocket Server (Python) | ws://0.0.0.0:8765 |
+| **Client** | WebSocket Client (React Native) | JSON messages @ 1Hz |
+| **Format** | JSON | breathing_rate, position_safe, confidence |
+| **Fallback** | Mock data simulation | Offline capability |
+
+### Machine Learning Pipeline
+| Stage | Technology | Details |
+|-------|------------|---------|
+| **Training Data** | 178 labeled images | 109 safe + 69 danger positions |
+| **Feature Extraction** | MediaPipe Pose | 66 features (33 landmarks × 2D) |
+| **Model** | Random Forest (scikit-learn) | 100 trees, max_depth=10 |
+| **Accuracy** | 90%+ on test set | Validated with cross-validation |
+| **Inference** | Real-time (<2ms) | Per-frame classification |
+| **Deployment** | Joblib serialization | models/position_model.joblib |
 
 ---
 
