@@ -18,7 +18,7 @@ BreatheSafe uses **real-time object detection** with MediaPipe Pose to monitor b
 
 ---
 
-## 🚀 Quick Start (5 Minutes)
+## 🚀 Quick Start 
 
 ### Step 1: Backend Setup (Python Server)
 ```bash
@@ -290,8 +290,6 @@ Always use proper medical monitoring devices and follow pediatrician recommendat
 
 ## 📸 Screenshots & Demo
 
-*(Add screenshots of your app here)*
-
 **Dashboard**: Real-time breathing monitor with position indicators  
 **History**: Interactive charts showing breathing patterns  
 **Learn**: Educational content about safe sleep practices  
@@ -318,4 +316,4 @@ Always use proper medical monitoring devices and follow pediatrician recommendat
 
 **Made with ❤️ for safer baby sleep monitoring**
 
-MIT License | October 2025 | Hackathon Submission
+October 2025 | Hackathon Submission
